@@ -1,0 +1,440 @@
+openapi: 3.0.0
+info:
+  title: Social-one-type
+  version: 1.0.0
+servers:
+  - url: http://{{baseurl}}client
+  - url: http://{{baseurl}}customer
+  - url: http://{{baseurl}}admin
+tags:
+  - name: Client
+  - name: Client > Manage Customer
+  - name: Customer
+  - name: Admin
+  - name: Admin > Category
+  - name: Admin > Sub Category
+  - name: Admin > Subcription
+  - name: Admin > Client
+paths:
+  /customer/page/1:
+    get:
+      tags:
+        - Client > Manage Customer
+      summary: Get customer
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGZmMWE3NjMyYWYyY2U4OGM0YzU3NTgiLCJ1c2VyVHlwZSI6ImNsaWVudCIsImlhdCI6MTY5NDQ0MDA1NH0.Tsf-rS8w-l33Lzd5ihdEkvbAxC2zT2hzBYrG8XysyVw
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: client
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /customer/status/65000b642c733eabe9135734:
+    put:
+      tags:
+        - Client > Manage Customer
+      summary: Status change
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: false
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGZmMWE3NjMyYWYyY2U4OGM0YzU3NTgiLCJ1c2VyVHlwZSI6ImNsaWVudCIsImlhdCI6MTY5NDQ0MDA1NH0.Tsf-rS8w-l33Lzd5ihdEkvbAxC2zT2hzBYrG8XysyVw
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: client
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /signup:
+    post:
+      tags:
+        - Admin
+      summary: Sign up
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: admin@gmai.com
+                password: '123456789'
+                fristName: Amlan
+                lastName: Mondal
+                mobileNumber: '1236547890'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /signin:
+    post:
+      tags:
+        - Admin
+      summary: Sign In
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: admin@gmai.com
+                password: '123456789'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /get-profile:
+    get:
+      tags:
+        - Client
+      summary: Get profile
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGZlYjM1MmUzMTI1M2YyMWU3NTFiNDgiLCJ1c2VyVHlwZSI6ImNsaWVudCIsImlhdCI6MTY5NDQxMzY1MH0.gwWOHFTmc1PJ8tmhUkAVZNoHjzn_3ISiu00ic60N1jg
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: client
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /get-secret-keys:
+    get:
+      tags:
+        - Client
+      summary: get secret keys
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGZlYjM1MmUzMTI1M2YyMWU3NTFiNDgiLCJ1c2VyVHlwZSI6ImNsaWVudCIsImlhdCI6MTY5NDQxMzY1MH0.gwWOHFTmc1PJ8tmhUkAVZNoHjzn_3ISiu00ic60N1jg
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: client
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /category:
+    post:
+      tags:
+        - Admin > Category
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Electronic
+                description: Ki6una
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Category
+      summary: view
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /category/update/6501711188820da39664db67:
+    put:
+      tags:
+        - Admin > Category
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                description: janinaaa
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /sub-category:
+    post:
+      tags:
+        - Admin > Sub Category
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Mobiles
+                categoryID: 6501711188820da39664db67
+                description: Ki6una
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Sub Category
+      summary: view
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /sub-category/update/65018908b5f8ef8a8e71867a:
+    put:
+      tags:
+        - Admin > Sub Category
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Mobiles
+                categoryID: 6501711188820da39664db67
+                description: Ki6una
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /subcription:
+    post:
+      tags:
+        - Admin > Subcription
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Havvy Offer
+                description: Sundor jinis dekte pabe
+                validity: 365
+                price: '10'
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Subcription
+      summary: view
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /subcription/update/6502bd8340ccab39f1fef952:
+    put:
+      tags:
+        - Admin > Subcription
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Havvy Offer
+                description: Sundor jinis dekte pabe 4K
+                validity: 365
+                price: '10'
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /client/1:
+    get:
+      tags:
+        - Admin > Client
+      summary: View
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /client/status/64feb352e31253f21e751b48:
+    post:
+      tags:
+        - Admin > Client
+      summary: Change Status Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: false
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{adminToken}}'
+        - name: usertype
+          in: header
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
