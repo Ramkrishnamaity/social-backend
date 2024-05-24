@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "eslint . --ext .ts  --fix && nodemon",
     "dev": "nodemon",
+    "live": "node ./build/index.js",
     "lint": "eslint . --ext .ts --fix",
     "add": "git add .",
     "commit": "git commit -m \"$msg\"",
